@@ -33,7 +33,7 @@ namespace Platformer2d.Controllers
 
         void FixedUpdate()
         {
-            //_mover.FixedTick();
+            _mover.FixedTick();
             _jump.FixedTick();
         }
 
