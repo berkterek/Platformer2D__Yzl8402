@@ -7,6 +7,7 @@ namespace Platformer2d.Abstracts.Inputs
     public interface IInputReader
     {
         float Horizontal { get; }
+        bool IsJumpButtonPressed { get; }
     }    
 }
 

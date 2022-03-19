@@ -23,6 +23,7 @@ namespace Platformer2d.Controllers
 
         void Update()
         {
+            Debug.Log(InputReader.IsJumpButtonPressed);
             _mover.Tick();
         }
 
