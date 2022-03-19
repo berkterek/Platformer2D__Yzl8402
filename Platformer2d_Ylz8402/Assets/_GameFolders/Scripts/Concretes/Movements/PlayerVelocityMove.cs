@@ -10,7 +10,7 @@ namespace Platformer2d.Movements
         readonly Rigidbody2D _rigidbody2D;
 
         float _horizontal;
-        float _moveSpeed = 500f;
+        float _moveSpeed = 250f;
         
         public PlayerVelocityMove(IPlayerController playerController)
         {

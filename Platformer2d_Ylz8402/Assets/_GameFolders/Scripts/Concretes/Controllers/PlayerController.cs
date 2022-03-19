@@ -9,9 +9,8 @@ namespace Platformer2d.Controllers
 {
     public class PlayerController : MonoBehaviour, IPlayerController
     {
-        [SerializeField] float _moveSpeed = 1f;
-
         IMover _mover;
+        IJump _jump;
         
         public IInputReader InputReader { get; private set; }
 
@@ -19,17 +18,19 @@ namespace Platformer2d.Controllers
         {
             InputReader = new NewInputReader();
             _mover = new PlayerVelocityMove(this);
+            _jump = new PlayerJumpForce(this);
         }
 
         void Update()
         {
-            Debug.Log(InputReader.IsJumpButtonPressed);
             _mover.Tick();
+            _jump.Tick();
         }
 
         void FixedUpdate()
         {
             _mover.FixedTick();
+            _jump.FixedTick();
         }
     }
 }
