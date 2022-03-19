@@ -1,6 +1,8 @@
 using Platformer2d.Abstracts.Controllers;
 using Platformer2d.Abstracts.Inputs;
+using Platformer2d.Abstracts.Movements;
 using Platformer2d.Inputs;
+using Platformer2d.Movements;
 using UnityEngine;
 
 namespace Platformer2d.Controllers
@@ -9,19 +11,24 @@ namespace Platformer2d.Controllers
     {
         [SerializeField] float _moveSpeed = 1f;
 
-        IInputReader _inputReader;
+        IMover _mover;
+        
+        public IInputReader InputReader { get; private set; }
 
         void Awake()
         {
-            _inputReader = new NewInputReader();
+            InputReader = new NewInputReader();
+            _mover = new PlayerVelocityMove(this);
         }
 
         void Update()
         {
+            _mover.Tick();
         }
 
         void FixedUpdate()
         {
+            _mover.FixedTick();
         }
     }
 }
