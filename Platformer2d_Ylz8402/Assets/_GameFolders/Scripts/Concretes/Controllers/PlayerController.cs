@@ -17,6 +17,7 @@ namespace Platformer2d.Controllers
         IFlip _flip;
         
         public IInputReader InputReader { get; private set; }
+        public IGroundChecker GroundChecker { get; private set; }
 
         void Awake()
         {
@@ -25,6 +26,7 @@ namespace Platformer2d.Controllers
             _jump = new PlayerJumpForce(this);
             _animator = new PlayerAnimationWithAnimator(this);
             _flip = new PlayerSpriteRenderFlip(this);
+            GroundChecker = GetComponent<IGroundChecker>();
         }
 
         void Update()

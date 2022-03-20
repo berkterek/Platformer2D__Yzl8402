@@ -24,6 +24,7 @@ namespace Platformer2d.Animations
         {
             float horizontal = Mathf.Abs(_playerController.InputReader.Horizontal);
             _animator.SetFloat("moveSpeed", horizontal);
+            _animator.SetBool("isJump", !_playerController.GroundChecker.IsOnGround);
         }
     }
 }
