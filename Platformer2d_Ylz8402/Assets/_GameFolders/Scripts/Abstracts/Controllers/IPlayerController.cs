@@ -3,7 +3,7 @@ using Platformer2d.Movements;
 
 namespace Platformer2d.Abstracts.Controllers
 {
-    public interface IPlayerController : IEntityController
+    public interface IPlayerController : IEntityController,IHealthController
     {
         IInputReader InputReader { get; }
         IGroundChecker GroundChecker { get; }
