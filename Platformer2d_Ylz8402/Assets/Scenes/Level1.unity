@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1064491114}
   - component: {fileID: 1064491113}
   - component: {fileID: 1064491115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,10 +248,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2180586959732536795, guid: 36d8524ede622194787874c47a5fc960, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180586959732536795, guid: 36d8524ede622194787874c47a5fc960, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -289,18 +285,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2180586959732536795, guid: 36d8524ede622194787874c47a5fc960, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180586959732536797, guid: 36d8524ede622194787874c47a5fc960, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180586959829911760, guid: 36d8524ede622194787874c47a5fc960, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2180586959829911763, guid: 36d8524ede622194787874c47a5fc960, type: 3}
-      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

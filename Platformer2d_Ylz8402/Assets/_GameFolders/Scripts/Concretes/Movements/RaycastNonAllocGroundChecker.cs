@@ -2,29 +2,48 @@
 
 namespace Platformer2d.Movements
 {
-    public class RaycastNonAllocGroundChecker : IGroundChecker
+    public class RaycastNonAllocGroundChecker : MonoBehaviour, IGroundChecker
     {
-        Transform[] _transforms;
-        RaycastHit2D[] _hitResults;
-        
-        public bool IsOnGround { get; private set; }
+        [SerializeField] bool _isOnGround;
+        [SerializeField] LayerMask _layerMask;
+        [SerializeField] Transform[] _transforms;
 
-        public RaycastNonAllocGroundChecker()
+        RaycastHit2D[] _hitResults;
+
+        public bool IsOnGround => _isOnGround;
+
+        void Awake()
         {
             _hitResults = new RaycastHit2D[10];
         }
-        
+
+        void FixedUpdate()
+        {
+            FixedTick();
+        }
+
         public void FixedTick()
         {
-            foreach (Transform transform in _transforms)
+            foreach (Transform footTransform in _transforms)
             {
                 int resultCount = Physics2D.RaycastNonAlloc(
-                    transform.position,
-                    transform.forward,
+                    footTransform.position,
+                    footTransform.forward,
                     _hitResults,
                     0.1f,
-                );    
+                    _layerMask
+                );
+
+                Debug.DrawRay(footTransform.position, footTransform.forward * 0.1f, Color.red);
+
+                if (resultCount != 0)
+                {
+                    _isOnGround = true;
+                    return;
+                }
             }
+
+            _isOnGround = false;
         }
     }
 
