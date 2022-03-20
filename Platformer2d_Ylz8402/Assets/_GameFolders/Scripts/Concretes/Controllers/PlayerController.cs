@@ -14,6 +14,7 @@ namespace Platformer2d.Controllers
         IMover _mover;
         IJump _jump;
         IAnimator _animator;
+        IFlip _flip;
         
         public IInputReader InputReader { get; private set; }
 
@@ -23,12 +24,14 @@ namespace Platformer2d.Controllers
             _mover = new PlayerVelocityMove(this);
             _jump = new PlayerJumpForce(this);
             _animator = new PlayerAnimationWithAnimator(this);
+            _flip = new PlayerSpriteRenderFlip(this);
         }
 
         void Update()
         {
             _mover.Tick();
             _jump.Tick();
+            _flip.Tick();
         }
 
         void FixedUpdate()
@@ -40,6 +43,7 @@ namespace Platformer2d.Controllers
         void LateUpdate()
         {
             _animator.LateTick();
+            _flip.LateTick();
         }
     }
 }
