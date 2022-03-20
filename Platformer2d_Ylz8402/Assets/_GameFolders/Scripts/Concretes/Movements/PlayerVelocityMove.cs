@@ -10,7 +10,6 @@ namespace Platformer2d.Movements
         readonly Rigidbody2D _rigidbody2D;
 
         float _horizontal;
-        float _moveSpeed = 250f;
         
         public PlayerVelocityMove(IPlayerController playerController)
         {
@@ -26,7 +25,7 @@ namespace Platformer2d.Movements
 
         public void FixedTick()
         {
-            float x = _horizontal * Time.deltaTime * _moveSpeed;
+            float x = _horizontal * Time.deltaTime * _playerController.Stats.MoveSpeed;
             float y = _rigidbody2D.velocity.y;
             Vector3 direction = new Vector3(x, y);
             _rigidbody2D.velocity = direction;

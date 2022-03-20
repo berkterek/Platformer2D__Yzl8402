@@ -9,7 +9,6 @@ namespace Platformer2d.Movements
         readonly IPlayerController _playerController;
         readonly Transform _transform;
 
-        float _moveSpeed = 2f;
         float _horizontal;
 
         public PlayerTranslateMove(IPlayerController playerController)
@@ -26,7 +25,7 @@ namespace Platformer2d.Movements
 
         public void FixedTick()
         {
-            _transform.Translate(Vector3.right * _horizontal * Time.deltaTime * _moveSpeed);
+            _transform.Translate(Vector3.right * _horizontal * Time.deltaTime * _playerController.Stats.MoveSpeed);
         }
     }
 }

@@ -1,4 +1,5 @@
 using Platformer2d.Abstracts.Combats;
+using Platformer2d.Abstracts.Controllers;
 using UnityEngine;
 
 namespace Platformer2d.Combats
@@ -10,9 +11,9 @@ namespace Platformer2d.Combats
         bool IsDead => CurrentHealth <= 0;        
         public event System.Action OnDead;
 
-        public Health()
+        public Health(IPlayerController playerController)
         {
-            MaxHealth = 100;
+            MaxHealth = playerController.Stats.MaxHealth;
             CurrentHealth = MaxHealth;
         }
         

@@ -10,7 +10,6 @@ namespace Platformer2d.Movements
         readonly IPlayerController _playerController;
 
         bool _isJump;
-        float _force = 5000f; 
     
         public PlayerJumpForce(IPlayerController playerController)
         {
@@ -32,7 +31,7 @@ namespace Platformer2d.Movements
             if (_isJump)
             {
                 _rigidbody2D.velocity = Vector2.zero;
-                _rigidbody2D.AddForce(Vector2.up * _force * Time.deltaTime);
+                _rigidbody2D.AddForce(Vector2.up * _playerController.Stats.JumpForce * Time.deltaTime);
             }
 
             _isJump = false;
