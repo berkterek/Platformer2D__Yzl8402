@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 200
   _jumpForce: 5000
+  _maxJumpCount: 2
   _maxHealth: 100
