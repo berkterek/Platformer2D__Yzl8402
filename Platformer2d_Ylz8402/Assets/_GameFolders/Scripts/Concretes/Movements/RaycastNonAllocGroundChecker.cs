@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Platformer2d.Abstracts.Movements;
+using UnityEngine;
 
 namespace Platformer2d.Movements
 {
@@ -33,8 +34,10 @@ namespace Platformer2d.Movements
                     0.1f,
                     _layerMask
                 );
-
+                
+#if UNITY_EDITOR
                 Debug.DrawRay(footTransform.position, footTransform.forward * 0.1f, Color.red);
+#endif
 
                 if (resultCount != 0)
                 {
@@ -45,11 +48,5 @@ namespace Platformer2d.Movements
 
             _isOnGround = false;
         }
-    }
-
-    public interface IGroundChecker
-    {
-        bool IsOnGround { get; }
-        void FixedTick();
     }
 }

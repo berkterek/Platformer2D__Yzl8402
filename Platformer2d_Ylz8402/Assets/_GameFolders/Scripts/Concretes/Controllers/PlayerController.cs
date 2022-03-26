@@ -1,3 +1,4 @@
+using System;
 using Platformer2d.Abstracts.Animations;
 using Platformer2d.Abstracts.Combats;
 using Platformer2d.Abstracts.Controllers;
@@ -55,6 +56,7 @@ namespace Platformer2d.Controllers
         {
             _animator.LateTick();
             _flip.LateTick();
+            _jump.LateUpdate();
         }
     }
 }

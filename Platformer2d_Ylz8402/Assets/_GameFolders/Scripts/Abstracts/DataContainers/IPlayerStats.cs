@@ -5,6 +5,7 @@ namespace Platformer2d.Abstracts.DataContainers
     {
         float MoveSpeed { get; }
         float JumpForce { get; }
+        int MaxJumpCount { get; }
         int MaxHealth { get; }
     }
 }

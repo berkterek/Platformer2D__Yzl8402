@@ -1,9 +1,8 @@
 ﻿namespace Platformer2d.Abstracts.Movements
 {
-    public interface IJump
+    public interface IGroundChecker
     {
-        void Tick();
+        bool IsOnGround { get; }
         void FixedTick();
-        void LateUpdate();
     }
 }
