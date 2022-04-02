@@ -7,5 +7,6 @@ namespace Platformer2d.Abstracts.Combats
         int MaxHealth { get; }
         int CurrentHealth { get; }
         event System.Action OnDead;
+        event System.Action OnTookHit;
     }
 }

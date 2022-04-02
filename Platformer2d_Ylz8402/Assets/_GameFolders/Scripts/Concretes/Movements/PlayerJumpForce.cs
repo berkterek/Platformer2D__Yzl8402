@@ -28,8 +28,6 @@ namespace Platformer2d.Movements
             {
                 _isJump = true;
             }
-            
-            Debug.Log(_currentJumpCounter);
         }
 
         public void FixedTick()

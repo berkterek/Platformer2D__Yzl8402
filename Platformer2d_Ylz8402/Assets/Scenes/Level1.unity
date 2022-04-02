@@ -9373,6 +9373,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 921803302942714666, guid: a09623535989ec943ae5b90dc190e619, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 921803302942714666, guid: a09623535989ec943ae5b90dc190e619, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 921803302942714667, guid: a09623535989ec943ae5b90dc190e619, type: 3}
       propertyPath: m_Follow
       value: 
@@ -9429,6 +9437,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraObjects
       objectReference: {fileID: 0}
+    - target: {fileID: 7300603955086865754, guid: a09623535989ec943ae5b90dc190e619, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300603955086865754, guid: a09623535989ec943ae5b90dc190e619, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a09623535989ec943ae5b90dc190e619, type: 3}
 --- !u!1001 &2180586960026297321
@@ -9444,7 +9460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2180586959732536792, guid: 36d8524ede622194787874c47a5fc960, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2180586959732536795, guid: 36d8524ede622194787874c47a5fc960, type: 3}
       propertyPath: m_RootOrder
@@ -9490,6 +9506,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2180586959732536796, guid: 36d8524ede622194787874c47a5fc960, type: 3}
+      propertyPath: _startPoint
+      value: 
+      objectReference: {fileID: 1447519502}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36d8524ede622194787874c47a5fc960, type: 3}
 --- !u!4 &2180586960026297322 stripped
@@ -9510,7 +9530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946713668941060184, guid: 472f40dc8f9669a4fb59aeb0f9427e8a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2946713668941060187, guid: 472f40dc8f9669a4fb59aeb0f9427e8a, type: 3}
       propertyPath: m_RootOrder

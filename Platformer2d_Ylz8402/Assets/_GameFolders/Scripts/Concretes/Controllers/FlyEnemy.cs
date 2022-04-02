@@ -12,8 +12,10 @@ namespace Platformer2d.Controllers
         public float MaxDistance => _maxDistance;
         public Vector3 Direction { get => _direction; set => _direction = value; }
         
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             _mover = new EnemyMoveWithVector2Direction(this);
         }
     }

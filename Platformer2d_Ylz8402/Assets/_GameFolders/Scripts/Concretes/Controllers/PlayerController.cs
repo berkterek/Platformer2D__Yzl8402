@@ -16,6 +16,7 @@ namespace Platformer2d.Controllers
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] PlayerStatsSO _stats;
+        [SerializeField] Transform _startPoint;
         
         IMover _mover;
         IJump _jump;
@@ -38,6 +39,16 @@ namespace Platformer2d.Controllers
             GroundChecker = GetComponent<IGroundChecker>();
         }
 
+        void OnEnable()
+        {
+            Health.OnTookHit += HandleOnTookHit;
+        }
+
+        void OnDisable()
+        {
+            Health.OnTookHit -= HandleOnTookHit;
+        }
+
         void Update()
         {
             _mover.Tick();
@@ -56,6 +67,11 @@ namespace Platformer2d.Controllers
             _animator.LateTick();
             _flip.LateTick();
             _jump.LateUpdate();
+        }
+
+        void HandleOnTookHit()
+        {
+            transform.position = _startPoint.position;
         }
     }
 }

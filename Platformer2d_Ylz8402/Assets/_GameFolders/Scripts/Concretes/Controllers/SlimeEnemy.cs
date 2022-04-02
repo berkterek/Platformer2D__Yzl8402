@@ -18,8 +18,10 @@ namespace Platformer2d.Controllers
         public float Direction { get => _direction; set => _direction = value; }
         public IGroundChecker GroundChecker { get; private set; }
 
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             GroundChecker = GetComponent<RaycastGroundChecker>();
             Flip = new EnemyScaleFlip(_body);
             _mover = new EnemyMoveWithOneDirection(this);

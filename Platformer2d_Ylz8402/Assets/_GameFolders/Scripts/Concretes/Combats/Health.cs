@@ -10,6 +10,7 @@ namespace Platformer2d.Combats
         public int CurrentHealth { get; private set; }
         bool IsDead => CurrentHealth <= 0;        
         public event System.Action OnDead;
+        public event System.Action OnTookHit;
 
         public Health(IPlayerController playerController)
         {
@@ -26,6 +27,10 @@ namespace Platformer2d.Combats
             if (IsDead)
             {
                 OnDead?.Invoke();    
+            }
+            else
+            {
+                OnTookHit?.Invoke();
             }
         }
     }    
