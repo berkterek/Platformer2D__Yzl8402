@@ -2,6 +2,6 @@
 {
     public interface IEnemyController : IEntityController
     {
-        
+        float MoveSpeed { get; }
     }
 }

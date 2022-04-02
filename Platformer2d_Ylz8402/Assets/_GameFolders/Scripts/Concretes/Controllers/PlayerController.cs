@@ -1,4 +1,3 @@
-using System;
 using Platformer2d.Abstracts.Animations;
 using Platformer2d.Abstracts.Combats;
 using Platformer2d.Abstracts.Controllers;
