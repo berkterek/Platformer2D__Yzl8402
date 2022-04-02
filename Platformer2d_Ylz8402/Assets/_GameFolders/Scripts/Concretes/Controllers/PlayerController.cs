@@ -20,7 +20,7 @@ namespace Platformer2d.Controllers
         IMover _mover;
         IJump _jump;
         IAnimator _animator;
-        IFlip _flip;
+        IPlayerFlip _flip;
         
         public IInputReader InputReader { get; private set; }
         public IGroundChecker GroundChecker { get; private set; }

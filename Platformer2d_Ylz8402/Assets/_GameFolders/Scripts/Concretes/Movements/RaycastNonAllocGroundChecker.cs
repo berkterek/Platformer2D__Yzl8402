@@ -34,7 +34,7 @@ namespace Platformer2d.Movements
                     0.1f,
                     _layerMask
                 );
-                
+
 #if UNITY_EDITOR
                 Debug.DrawRay(footTransform.position, footTransform.forward * 0.1f, Color.red);
 #endif

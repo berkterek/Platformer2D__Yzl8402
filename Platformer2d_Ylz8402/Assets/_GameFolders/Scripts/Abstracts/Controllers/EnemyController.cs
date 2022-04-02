@@ -1,4 +1,3 @@
-using Platformer2d.Abstracts.Controllers;
 using Platformer2d.Abstracts.Movements;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace Platformer2d.Abstracts.Controllers
         {
             _mover.Tick();
         }
-
+        
         void FixedUpdate()
         {
             _mover.FixedTick();

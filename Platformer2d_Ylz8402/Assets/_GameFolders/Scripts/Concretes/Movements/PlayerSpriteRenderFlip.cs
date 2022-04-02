@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace Platformer2d.Movements
 {
-    public class PlayerSpriteRenderFlip : IFlip
+    public class PlayerSpriteRenderFlip : IPlayerFlip
     {
         readonly IPlayerController _playerController;
         readonly SpriteRenderer _spriteRenderer;
         
         float _horizontal;
+        bool _result;
         
         public PlayerSpriteRenderFlip(IPlayerController playerController)
         {
@@ -26,11 +27,16 @@ namespace Platformer2d.Movements
         {
             if (_horizontal == 0f) return;
             
-            bool result =_horizontal < 0f;
+            _result =_horizontal < 0f;
 
-            if (result == _spriteRenderer.flipX) return;
+            if (_result == _spriteRenderer.flipX) return;
 
-            _spriteRenderer.flipX = result;
+            FlipProcess();
+        }
+
+        public void FlipProcess()
+        {
+            _spriteRenderer.flipX = _result;
         }
     }
 }

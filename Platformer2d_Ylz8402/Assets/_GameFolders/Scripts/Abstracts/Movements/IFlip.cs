@@ -2,7 +2,6 @@
 {
     public interface IFlip
     {
-        void Tick();
-        void LateTick();
+        void FlipProcess();
     }
 }
