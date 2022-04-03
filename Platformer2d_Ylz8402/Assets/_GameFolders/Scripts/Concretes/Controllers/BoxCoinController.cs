@@ -13,13 +13,13 @@ namespace Platformer2d.Controllers
 
             if (_counter > 0)
             {
-                playerController.IncreaseCoin(pointValue);
+                playerController.IncreaseCoin(_pointValue);
                 _animator.SetTrigger("collected");
                 _particle.Play();
             }
             else if (_counter == 0)
             {
-                playerController.IncreaseCoin(pointValue);
+                playerController.IncreaseCoin(_pointValue);
                 _spriteRenderer.sprite = _endSprite;
             }
         }

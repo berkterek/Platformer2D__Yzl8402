@@ -23,6 +23,7 @@ namespace Platformer2d.Combats
             if (IsDead) return;
             
             CurrentHealth = Mathf.Max(CurrentHealth -= attacker.Damage,0);
+            Debug.Log(CurrentHealth);
             
             if (IsDead)
             {
@@ -32,6 +33,12 @@ namespace Platformer2d.Combats
             {
                 OnTookHit?.Invoke();
             }
+        }
+        
+        public void IncreaseHealth(int healthValue)
+        {
+            CurrentHealth = Mathf.Min(CurrentHealth + healthValue, MaxHealth);
+            Debug.Log(CurrentHealth);
         }
     }    
 }

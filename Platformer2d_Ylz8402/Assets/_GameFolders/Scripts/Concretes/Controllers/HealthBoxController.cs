@@ -10,7 +10,7 @@ namespace Platformer2d.Controllers
         {
             if (_isPlayOneTime) return;
             
-            //TODO Increase health
+            playerController.Health.IncreaseHealth(_pointValue);
             _animator.SetTrigger("collected");
             _particle.Play();
             _spriteRenderer.sprite = _endSprite;

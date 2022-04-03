@@ -7,7 +7,7 @@ namespace Platformer2d.Abstracts.Controllers
     {
         [SerializeField] protected ParticleSystem _particle;
         [SerializeField] protected Sprite _endSprite;
-        [SerializeField] protected int pointValue = 1;
+        [SerializeField] protected int _pointValue = 1;
         
         protected SpriteRenderer _spriteRenderer;
         protected Animator _animator;
