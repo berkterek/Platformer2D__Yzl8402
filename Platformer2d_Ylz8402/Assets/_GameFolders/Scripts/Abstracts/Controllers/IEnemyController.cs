@@ -1,7 +1,9 @@
-﻿namespace Platformer2d.Abstracts.Controllers
+﻿using Platformer2d.Abstracts.DataContainers;
+
+namespace Platformer2d.Abstracts.Controllers
 {
-    public interface IEnemyController : IEntityController, IAttackerController
+    public interface IEnemyController : IEntityController, IAttackerController, IHealthController
     {
-        float MoveSpeed { get; }
+        IEnemyStats Stats { get; }
     }
 }

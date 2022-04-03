@@ -8,11 +8,13 @@ namespace Platformer2d.Movements
     {
         readonly Transform _transform;
         readonly ISlimeEnemyController _enemyController;
+        readonly float _moveSpeed;
         
         public EnemyMoveWithOneDirection(ISlimeEnemyController enemyController)
         {
             _transform = enemyController.transform;
             _enemyController = enemyController;
+            _moveSpeed = _enemyController.Stats.MoveSpeed;
         }
         
         public void Tick()
@@ -26,7 +28,7 @@ namespace Platformer2d.Movements
 
         public void FixedTick()
         {
-            _transform.Translate(Vector2.right * _enemyController.Direction * _enemyController.MoveSpeed * Time.deltaTime);
+            _transform.Translate(Vector2.right * _enemyController.Direction * _moveSpeed * Time.deltaTime);
         }
     }
 }

@@ -31,11 +31,11 @@ namespace Platformer2d.Controllers
         void Awake()
         {
             InputReader = new NewInputReader();
-            _mover = new PlayerVelocityMove(this);
+            _mover = new PlayerTranslateMove(this);
             _jump = new PlayerJumpForce(this);
             _animator = new PlayerAnimationWithAnimator(this);
             _flip = new PlayerSpriteRenderFlip(this);
-            Health = new Health(this);
+            Health = new Health(_stats);
             GroundChecker = GetComponent<IGroundChecker>();
         }
 

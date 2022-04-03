@@ -1,22 +1,25 @@
 using Platformer2d.Abstracts.Combats;
+using Platformer2d.Abstracts.DataContainers;
 using Platformer2d.Abstracts.Movements;
 using Platformer2d.Combats;
+using Platformer2d.ScriptableObjects;
 using UnityEngine;
 
 namespace Platformer2d.Abstracts.Controllers
 {
     public abstract class EnemyController : MonoBehaviour, IEnemyController
     {
-        [SerializeField] protected float _moveSpeed = 1f;
+        [SerializeField] EnemyStatsSO _enemyStats; 
 
         protected IMover _mover;
-
-        public float MoveSpeed => _moveSpeed;
         public IAttacker Attacker { get; private set; }
+        public IHealth Health { get; private set; }
+        public IEnemyStats Stats => _enemyStats;
 
         protected virtual void Awake()
         {
             Attacker = new Attacker();
+            Health = new Health(_enemyStats);
         }
 
         void Update()
@@ -37,5 +40,8 @@ namespace Platformer2d.Abstracts.Controllers
             
             playerController.Health.TakeDamage(Attacker);
         }
+
+
+        
     }
 }

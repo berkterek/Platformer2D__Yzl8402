@@ -8,8 +8,6 @@ namespace Platformer2d.Controllers
     public class SlimeEnemy : EnemyController,ISlimeEnemyController
     {
         [SerializeField] float _direction = 1f;
-        
-        //Flip
         [SerializeField] Transform _body;
 
         bool _canEnemyGoForward;

@@ -9,12 +9,14 @@ namespace Platformer2d.Movements
         readonly IFlyEnemyController _flyEnemyController;
         readonly Transform _transform;
         readonly Vector3 _startPosition;
+        readonly float _moveSpeed;
 
         public EnemyMoveWithVector2Direction(IFlyEnemyController flyEnemyController)
         {
             _flyEnemyController = flyEnemyController;
             _transform = flyEnemyController.transform;
             _startPosition = _transform.position;
+            _moveSpeed = flyEnemyController.Stats.MoveSpeed;
         }
 
         public void Tick()
@@ -31,7 +33,7 @@ namespace Platformer2d.Movements
 
         public void FixedTick()
         {
-            _transform.Translate(_flyEnemyController.Direction * Time.deltaTime * _flyEnemyController.MoveSpeed);
+            _transform.Translate(_flyEnemyController.Direction * Time.deltaTime * _moveSpeed);
         }
     }
 }

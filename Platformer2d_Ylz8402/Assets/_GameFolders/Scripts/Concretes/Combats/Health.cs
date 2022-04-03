@@ -1,5 +1,6 @@
 using Platformer2d.Abstracts.Combats;
 using Platformer2d.Abstracts.Controllers;
+using Platformer2d.Abstracts.DataContainers;
 using UnityEngine;
 
 namespace Platformer2d.Combats
@@ -12,9 +13,9 @@ namespace Platformer2d.Combats
         public event System.Action OnDead;
         public event System.Action OnTookHit;
 
-        public Health(IPlayerController playerController)
+        public Health(IStats stats)
         {
-            MaxHealth = playerController.Stats.MaxHealth;
+            MaxHealth = stats.MaxHealth;
             CurrentHealth = MaxHealth;
         }
         

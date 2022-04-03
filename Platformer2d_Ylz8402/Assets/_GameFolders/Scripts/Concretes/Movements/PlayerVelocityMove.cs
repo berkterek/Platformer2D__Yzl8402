@@ -21,11 +21,12 @@ namespace Platformer2d.Movements
         public void Tick()
         {
             _horizontal = _playerController.InputReader.Horizontal;
+            _horizontal *= Time.deltaTime * _playerController.Stats.MoveSpeed;
         }
 
         public void FixedTick()
         {
-            float x = _horizontal * Time.deltaTime * _playerController.Stats.MoveSpeed;
+            float x = _horizontal;
             float y = _rigidbody2D.velocity.y;
             Vector3 direction = new Vector3(x, y);
             _rigidbody2D.velocity = direction;

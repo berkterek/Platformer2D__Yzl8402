@@ -16,7 +16,7 @@ namespace Combats
             var player = Substitute.For<IPlayerController>();
             player.Stats.Returns(Substitute.For<IPlayerStats>());
             player.Stats.MaxHealth.Returns(100);
-            return new Health(player);
+            return new Health(player.Stats);
         }
 
         private IAttacker GetAttacker(int damage)

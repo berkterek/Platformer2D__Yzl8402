@@ -1,11 +1,10 @@
 ﻿
 namespace Platformer2d.Abstracts.DataContainers
 {
-    public interface IPlayerStats
+    public interface IPlayerStats : IStats
     {
-        float MoveSpeed { get; }
         float JumpForce { get; }
         int MaxJumpCount { get; }
-        int MaxHealth { get; }
+        
     }
 }
