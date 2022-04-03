@@ -15,7 +15,7 @@ namespace Platformer2d.Controllers
 {
     public class PlayerController : MonoBehaviour, IPlayerController
     {
-        [SerializeField] PlayerStatsSO _stats;
+        [SerializeField] PlayerDataContainer _playerData;
         [SerializeField] Transform _startPoint;
         
         IMover _mover;
@@ -25,7 +25,7 @@ namespace Platformer2d.Controllers
         
         public IInputReader InputReader { get; private set; }
         public IGroundChecker GroundChecker { get; private set; }
-        public IPlayerStats Stats => _stats;
+        public IPlayerStats Stats => _playerData.Stats;
         public IHealth Health { get; private set; }
         public IAttacker Attacker { get; private set; }
 
@@ -36,7 +36,7 @@ namespace Platformer2d.Controllers
             _jump = new PlayerJumpForce(this);
             _animator = new PlayerAnimationWithAnimator(this);
             _flip = new PlayerSpriteRenderFlip(this);
-            Health = new Health(_stats);
+            Health = new Health(_playerData.Stats);
             Attacker = new Attacker();
             GroundChecker = GetComponent<IGroundChecker>();
         }
