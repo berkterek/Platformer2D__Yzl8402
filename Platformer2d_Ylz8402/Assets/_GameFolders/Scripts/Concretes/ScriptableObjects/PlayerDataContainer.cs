@@ -1,4 +1,5 @@
-﻿using Platformer2d.Abstracts.DataContainers;
+﻿using System;
+using Platformer2d.Abstracts.DataContainers;
 using UnityEngine;
 
 namespace Platformer2d.ScriptableObjects
@@ -11,6 +12,11 @@ namespace Platformer2d.ScriptableObjects
 
         public int CurrentCoin => _currentCoin;
         public IPlayerStats Stats => _playerStats;
+
+        void OnDisable()
+        {
+            _currentCoin = 0;
+        }
 
         public void IncreaseCoin(int coinValue)
         {

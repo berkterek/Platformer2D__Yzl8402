@@ -91,5 +91,10 @@ namespace Platformer2d.Controllers
         {
             Destroy(this.gameObject);
         }
+        
+        public void IncreaseCoin(int coinValue)
+        {
+            _playerData.IncreaseCoin(coinValue);
+        }
     }
 }
