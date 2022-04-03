@@ -22,6 +22,16 @@ namespace Platformer2d.Abstracts.Controllers
             Health = new Health(_enemyStats);
         }
 
+        void OnEnable()
+        {
+            Health.OnDead += HandleOnDead;
+        }
+
+        void OnDisable()
+        {
+            Health.OnDead -= HandleOnDead;
+        }
+
         void Update()
         {
             _mover.Tick();
@@ -40,8 +50,10 @@ namespace Platformer2d.Abstracts.Controllers
             
             playerController.Health.TakeDamage(Attacker);
         }
-
-
         
+        void HandleOnDead()
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

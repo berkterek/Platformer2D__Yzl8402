@@ -1,5 +1,4 @@
 using Platformer2d.Abstracts.Combats;
-using Platformer2d.Abstracts.Controllers;
 using Platformer2d.Abstracts.DataContainers;
 using UnityEngine;
 

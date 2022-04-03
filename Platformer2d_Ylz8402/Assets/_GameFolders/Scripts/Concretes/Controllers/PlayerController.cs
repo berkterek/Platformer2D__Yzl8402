@@ -27,6 +27,7 @@ namespace Platformer2d.Controllers
         public IGroundChecker GroundChecker { get; private set; }
         public IPlayerStats Stats => _stats;
         public IHealth Health { get; private set; }
+        public IAttacker Attacker { get; private set; }
 
         void Awake()
         {
@@ -36,17 +37,20 @@ namespace Platformer2d.Controllers
             _animator = new PlayerAnimationWithAnimator(this);
             _flip = new PlayerSpriteRenderFlip(this);
             Health = new Health(_stats);
+            Attacker = new Attacker();
             GroundChecker = GetComponent<IGroundChecker>();
         }
 
         void OnEnable()
         {
             Health.OnTookHit += HandleOnTookHit;
+            Health.OnDead += HandleOnDead;
         }
 
         void OnDisable()
         {
             Health.OnTookHit -= HandleOnTookHit;
+            Health.OnDead -= HandleOnDead;
         }
 
         void Update()
@@ -69,9 +73,23 @@ namespace Platformer2d.Controllers
             _jump.LateUpdate();
         }
 
+        void OnCollisionEnter2D(Collision2D other)
+        {
+            if (!other.collider.TryGetComponent(out IEnemyController enemyController)) return;
+
+            if (other.contacts[0].normal != Vector2.up) return;
+            
+            enemyController.Health.TakeDamage(Attacker);
+        }
+
         void HandleOnTookHit()
         {
             transform.position = _startPoint.position;
+        }
+        
+        void HandleOnDead()
+        {
+            Destroy(this.gameObject);
         }
     }
 }
