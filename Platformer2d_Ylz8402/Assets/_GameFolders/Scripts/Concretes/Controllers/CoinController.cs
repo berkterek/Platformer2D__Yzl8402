@@ -1,3 +1,4 @@
+using System;
 using Platformer2d.Abstracts.Controllers;
 using UnityEngine;
 
@@ -12,10 +13,15 @@ namespace Platformer2d.Controllers
         {
             if (!other.TryGetComponent(out IPlayerController playerController)) return;
             
+            CollectedProcess(playerController);
+        }
+
+        private void CollectedProcess(IPlayerController playerController)
+        {
             playerController.IncreaseCoin(_coinPoint);
             vfx.transform.parent = null;
             vfx.SetActive(true);
             Destroy(this.gameObject);
         }
-    }    
+    }
 }
