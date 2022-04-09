@@ -16,13 +16,11 @@ namespace Platformer2d.Managers
         void Awake()
         {
             SingletonThisObject();
-            PlayerPrefs.DeleteAll();
             _playerPositionByLevelName = new Dictionary<string, Vector3>();
         }
 
         public void LoadGameScene(string sceneName)
         {
-            //Position not player => Doors Objective Start Points
             string currentSceneName = SceneManager.GetActiveScene().name;
             if (_playerPositionByLevelName.ContainsKey(currentSceneName))
             {
@@ -30,19 +28,10 @@ namespace Platformer2d.Managers
             }
             else
             {
-                _playerPositionByLevelName.Add(currentSceneName,LastPosition); //Level1 son oyuncu pozisyonu
+                _playerPositionByLevelName.Add(currentSceneName,LastPosition);
             }
             
             StartCoroutine(LoadGameSceneAsync(sceneName));
-
-            // if (_playerPositionByLevelName.ContainsKey(sceneName))
-            // {
-            //     _playerPositionByLevelName[sceneName] = Vector3.zero;
-            // }
-            // else
-            // {
-            //     _playerPositionByLevelName.Add(sceneName,Vector3.zero); //Level2 ilk position    
-            // }
         }
 
         private IEnumerator LoadGameSceneAsync(string sceneName)
@@ -70,6 +59,18 @@ namespace Platformer2d.Managers
             {
                 playerController.transform.position = _playerPositionByLevelName[currentSceneName];
             }
+        }
+
+        public void ExitGame()
+        {
+            Debug.Log("Exit Game");
+            Application.Quit();
+        }
+
+        public void DeleteLoadingData()
+        {
+            Debug.Log("Deleting all loading data");
+            PlayerPrefs.DeleteAll();
         }
     }    
 }
