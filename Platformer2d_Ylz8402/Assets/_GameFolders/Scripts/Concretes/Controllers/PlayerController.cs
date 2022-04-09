@@ -17,6 +17,7 @@ namespace Platformer2d.Controllers
     {
         [SerializeField] PlayerDataContainer _playerData;
         [SerializeField] Transform _startPoint;
+        [SerializeField] SpriteRenderer _objectiveSpriteRenderer;
         
         IMover _mover;
         IJump _jump;
@@ -26,6 +27,7 @@ namespace Platformer2d.Controllers
         public IInputReader InputReader { get; private set; }
         public IGroundChecker GroundChecker { get; private set; }
         public IPlayerStats Stats => _playerData.Stats;
+        public SpriteRenderer ObjectiveSpriteRenderer => _objectiveSpriteRenderer;
         public IHealth Health { get; private set; }
         public IAttacker Attacker { get; private set; }
 
