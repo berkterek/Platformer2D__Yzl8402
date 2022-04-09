@@ -11,6 +11,7 @@ namespace Platformer2d.ScriptableObjects
 
         public int CurrentCoin => _currentCoin;
         public IPlayerStats Stats => _playerStats;
+        public event System.Action<int> OnCoinValueChanged;
 
         void OnDisable()
         {
@@ -20,6 +21,7 @@ namespace Platformer2d.ScriptableObjects
         public void IncreaseCoin(int coinValue)
         {
             _currentCoin += coinValue;
+            OnCoinValueChanged?.Invoke(_currentCoin);
         }
 
         public bool DecreaseCoin(int coinValue)
@@ -32,6 +34,7 @@ namespace Platformer2d.ScriptableObjects
             }
 
             _currentCoin = resultValue;
+            OnCoinValueChanged?.Invoke(_currentCoin);
             return true;
         }
     }
