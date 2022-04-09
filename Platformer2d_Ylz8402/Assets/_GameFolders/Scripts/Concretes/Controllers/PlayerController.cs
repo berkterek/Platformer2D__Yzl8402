@@ -98,5 +98,10 @@ namespace Platformer2d.Controllers
         {
             _playerData.IncreaseCoin(coinValue);
         }
+
+        public bool DecreaseCoin(int coinValue)
+        {
+            return _playerData.DecreaseCoin(coinValue);
+        }
     }
 }

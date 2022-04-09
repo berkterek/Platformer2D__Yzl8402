@@ -12,5 +12,6 @@ namespace Platformer2d.Abstracts.Controllers
         IPlayerStats Stats { get; }
         SpriteRenderer ObjectiveSpriteRenderer { get; }
         void IncreaseCoin(int coinValue);
+        bool DecreaseCoin(int coinValue);
     }
 }

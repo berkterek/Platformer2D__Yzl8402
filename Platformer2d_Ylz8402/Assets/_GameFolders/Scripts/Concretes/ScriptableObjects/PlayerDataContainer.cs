@@ -1,5 +1,4 @@
-﻿using System;
-using Platformer2d.Abstracts.DataContainers;
+﻿using Platformer2d.Abstracts.DataContainers;
 using UnityEngine;
 
 namespace Platformer2d.ScriptableObjects
