@@ -8,12 +8,14 @@ namespace Platformer2d.Controllers
     {
         [SerializeField] string _levelName;
         [SerializeField] BoxCollider2D _boxCollider2D;
-        
+        [SerializeField] Transform _objectiveStartPoint;
+
         void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.TryGetComponent(out IPlayerController playerController)) return;
             _boxCollider2D.enabled = false;
-            
+
+            GameManager.Instance.LastPosition = _objectiveStartPoint.position;
             GameManager.Instance.LoadGameScene(_levelName);
         }
     }    

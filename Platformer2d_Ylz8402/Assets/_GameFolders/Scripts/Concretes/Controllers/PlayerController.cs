@@ -1,3 +1,4 @@
+using System;
 using Platformer2d.Abstracts.Animations;
 using Platformer2d.Abstracts.Combats;
 using Platformer2d.Abstracts.Controllers;
@@ -7,6 +8,7 @@ using Platformer2d.Abstracts.Movements;
 using Platformer2d.Animations;
 using Platformer2d.Combats;
 using Platformer2d.Inputs;
+using Platformer2d.Managers;
 using Platformer2d.Movements;
 using Platformer2d.ScriptableObjects;
 using UnityEngine;
@@ -53,6 +55,11 @@ namespace Platformer2d.Controllers
         {
             Health.OnTookHit -= HandleOnTookHit;
             Health.OnDead -= HandleOnDead;
+        }
+
+        void Start()
+        {
+            GameManager.Instance.SetPlayerLastPosition(this);
         }
 
         void Update()

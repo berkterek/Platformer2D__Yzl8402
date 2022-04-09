@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116537238}
   - component: {fileID: 1116537239}
+  - component: {fileID: 1116537240}
   m_Layer: 9
   m_Name: NextLevelObject
   m_TagString: Untagged
@@ -57,6 +58,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.075071335, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1116537240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116537237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1478380d2c84b2340b6fecae2de17643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelName: Level2
+  _boxCollider2D: {fileID: 1116537239}
+  _objectiveStartPoint: {fileID: 3846867056589091768}
+--- !u!1 &3127690437724389988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3846867056589091768}
+  m_Layer: 9
+  m_Name: ObjectiveStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3846867056589091768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3127690437724389988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2, y: 0.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8419973625411308105}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8419973624410704166
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +248,7 @@ Transform:
   m_Children:
   - {fileID: 8419973624980111875}
   - {fileID: 1116537238}
+  - {fileID: 3846867056589091768}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -249,6 +296,7 @@ MonoBehaviour:
   _doorBottomSpriteRender: {fileID: 8419973624410704164}
   _nextLevelObject: {fileID: 1116537237}
   _boxCollider2D: {fileID: 6348992831785193861}
+  _openCloseSaveLoad: {fileID: 11400000, guid: dcf72e3223ddb7748b1354c3e19e337e, type: 2}
 --- !u!1 &8419973626367797499
 GameObject:
   m_ObjectHideFlags: 0

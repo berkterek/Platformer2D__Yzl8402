@@ -1,4 +1,5 @@
 using Platformer2d.Abstracts.Controllers;
+using Platformer2d.ScriptableObjects;
 using UnityEngine;
 
 namespace Platformer2d.Controllers
@@ -13,19 +14,32 @@ namespace Platformer2d.Controllers
 
         [SerializeField] GameObject _nextLevelObject;
         [SerializeField] BoxCollider2D _boxCollider2D;
+
         
+        [SerializeField] OpenCloseSaveLoadDataContainer _openCloseSaveLoad;
+
+        void OnEnable()
+        {
+            if (_openCloseSaveLoad.IsOpen)
+            {
+                ObjectiveDone();
+            }
+        }
+
         void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.TryGetComponent(out IPlayerController playerController)) return;
             if (playerController.ObjectiveSpriteRenderer.sprite == null) return;
-
-            ObjectiveDone(playerController);
+            
+            playerController.ObjectiveSpriteRenderer.sprite = null;
+            _openCloseSaveLoad.IsOpen = true;
+            
+            ObjectiveDone();
         }
 
-        void ObjectiveDone(IPlayerController playerController)
+        void ObjectiveDone()
         {
             _boxCollider2D.enabled = false;
-            playerController.ObjectiveSpriteRenderer.sprite = null;
             
             _doorBottomSpriteRender.sprite = _doorBottomSprite;
             _doorTopSpriteRender.sprite = _doorTopSprite;
