@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer2d.ScriptableObjects
@@ -9,5 +7,25 @@ namespace Platformer2d.ScriptableObjects
     {
         [SerializeField] bool _isOpen = false;
         public bool IsOpen { get => _isOpen; set => _isOpen = value; }
+        
+
+        void OnEnable()
+        {
+            string value = PlayerPrefs.GetString(this.name);
+            if (!string.IsNullOrEmpty(value))
+            {
+                _isOpen = bool.Parse(value);
+            }
+            
+#if UNITY_EDITOR
+            _isOpen = false;
+#endif
+        }
+
+
+        void OnDisable()
+        {
+            PlayerPrefs.SetString(this.name,_isOpen.ToString());
+        }
     }
 }

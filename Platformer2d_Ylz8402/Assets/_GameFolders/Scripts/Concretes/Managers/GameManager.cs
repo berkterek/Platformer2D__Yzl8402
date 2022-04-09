@@ -16,6 +16,7 @@ namespace Platformer2d.Managers
         void Awake()
         {
             SingletonThisObject();
+            PlayerPrefs.DeleteAll();
             _playerPositionByLevelName = new Dictionary<string, Vector3>();
         }
 

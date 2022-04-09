@@ -1,4 +1,5 @@
 ﻿using Platformer2d.Abstracts.Controllers;
+using Platformer2d.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace Platformer2d.Controllers
 {
     public class KeyChestController : MonoBehaviour
     {
+        [SerializeField] OpenCloseSaveLoadDataContainer _openCloseSaveLoad;
         [SerializeField] TMP_Text _purchaseValueText;
         [SerializeField] int _purchaseValue = 10;
         
@@ -16,6 +18,14 @@ namespace Platformer2d.Controllers
         {
             _animator = GetComponent<Animator>();
             _collider2D = GetComponent<Collider2D>();
+        }
+        
+        void OnEnable()
+        {
+            if (_openCloseSaveLoad.IsOpen)
+            {
+                ObjectiveDone();
+            }
         }
 
         void Start()
@@ -29,13 +39,18 @@ namespace Platformer2d.Controllers
 
             if (playerController.DecreaseCoin(_purchaseValue))
             {
-                _animator.SetTrigger("open");
-                _collider2D.enabled = false;    
+                ObjectiveDone();
             }
             else
             {
                 Debug.Log("You dont have enough coin");
             }
+        }
+        
+        void ObjectiveDone()
+        {
+            _animator.SetTrigger("open");
+            _collider2D.enabled = false;
         }
     }
 }
