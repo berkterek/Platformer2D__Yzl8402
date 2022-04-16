@@ -24,13 +24,14 @@ namespace Platformer2d.Controllers
         IJump _jump;
         IAnimator _animator;
         IPlayerFlip _flip;
-        
+        bool _canPlay = true;
+
         public IInputReader InputReader { get; private set; }
         public IGroundChecker GroundChecker { get; private set; }
         public IPlayerStats Stats => _playerData.Stats;
         public IPlayerDataContainer PlayerData => _playerData;
         public SpriteRenderer ObjectiveSpriteRenderer => _objectiveSpriteRenderer;
-        public IHealth Health { get; private set; }
+        public IPlayerHealth Health { get; private set; }
         public IAttacker Attacker { get; private set; }
 
         void Awake()
@@ -49,12 +50,16 @@ namespace Platformer2d.Controllers
         {
             Health.OnTookHit += HandleOnTookHit;
             Health.OnDead += HandleOnDead;
+            if (GameManager.Instance == null) return;
+            GameManager.Instance.OnMenuOrRestartGame += Health.Delete;
         }
 
         void OnDisable()
         {
             Health.OnTookHit -= HandleOnTookHit;
             Health.OnDead -= HandleOnDead;
+            if (GameManager.Instance == null) return;
+            GameManager.Instance.OnMenuOrRestartGame -= Health.Delete;
         }
 
         void Start()
@@ -64,6 +69,8 @@ namespace Platformer2d.Controllers
 
         void Update()
         {
+            if (!_canPlay) return;
+            
             _mover.Tick();
             _jump.Tick();
             _flip.Tick();
@@ -98,8 +105,15 @@ namespace Platformer2d.Controllers
         
         void HandleOnDead()
         {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            _canPlay = false;
             _playerData.DyingEvent.Notify("Player is Dead");
-            Destroy(this.gameObject);
+            foreach (var child in GetComponentsInChildren<Collider>())
+            {
+                child.enabled = false;
+            }
+
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
         
         public void IncreaseCoin(int coinValue)

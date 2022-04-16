@@ -12,6 +12,7 @@ namespace Platformer2d.Managers
         Dictionary<string, Vector3> _playerPositionByLevelName;
 
         public Vector3 LastPosition { get; set; }
+        public event System.Action OnMenuOrRestartGame;
 
         void Awake()
         {
@@ -21,11 +22,13 @@ namespace Platformer2d.Managers
 
         public void LoadMenuScene()
         {
+            OnMenuOrRestartGame?.Invoke();
             StartCoroutine(LoadMenuSceneAsync());
         }
 
         public void StartGame()
         {
+            OnMenuOrRestartGame?.Invoke();
             StartCoroutine(LoadStartGameAsync());
         }
         
