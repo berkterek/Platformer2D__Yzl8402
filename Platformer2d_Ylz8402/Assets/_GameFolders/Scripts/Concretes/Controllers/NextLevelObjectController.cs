@@ -16,7 +16,7 @@ namespace Platformer2d.Controllers
             _boxCollider2D.enabled = false;
 
             GameManager.Instance.LastPosition = _objectiveStartPoint.position;
-            GameManager.Instance.LoadGameScene(_levelName);
+            GameManager.Instance.LoadGameSceneOnGameplay(_levelName);
         }
     }    
 }

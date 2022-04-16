@@ -7,7 +7,7 @@ namespace Platformer2d.Uis
     {
         protected override void HandleOnButtonClicked()
         {
-            GameManager.Instance.LoadGameScene("Level1");
+            GameManager.Instance.StartGame();
         }
     }
 }

@@ -21,10 +21,15 @@ namespace Platformer2d.Managers
 
         public void LoadMenuScene()
         {
-            StartCoroutine(LoadGameSceneAsync("Menu", LoadSceneMode.Single));
+            StartCoroutine(LoadMenuSceneAsync());
         }
 
-        public void LoadGameScene(string sceneName)
+        public void StartGame()
+        {
+            StartCoroutine(LoadStartGameAsync());
+        }
+
+        public void LoadGameSceneOnGameplay(string sceneName)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
             if (_playerPositionByLevelName.ContainsKey(currentSceneName))
@@ -33,15 +38,43 @@ namespace Platformer2d.Managers
             }
             else
             {
-                _playerPositionByLevelName.Add(currentSceneName,LastPosition);
+                _playerPositionByLevelName.Add(currentSceneName, LastPosition);
             }
-            
-            StartCoroutine(LoadGameSceneAsync(sceneName,LoadSceneMode.Single));
+
+            StartCoroutine(LoadGameSceneOnGameplayAsync(sceneName, currentSceneName));
         }
 
-        private IEnumerator LoadGameSceneAsync(string sceneName, LoadSceneMode mode)
+        private IEnumerator LoadGameSceneOnGameplayAsync(string newScene, string oldScene)
         {
-            yield return SceneManager.LoadSceneAsync(sceneName,mode);
+            Scene uiScene = SceneManager.GetSceneByName("Ui");
+            SceneManager.SetActiveScene(uiScene);
+
+            yield return SceneManager.UnloadSceneAsync(oldScene);
+            
+            yield return SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
+            Scene newActiveScene = SceneManager.GetSceneByName(newScene);
+            SceneManager.SetActiveScene(newActiveScene);
+        }
+
+        private IEnumerator LoadStartGameAsync()
+        {
+            Scene activeScene = SceneManager.GetActiveScene();
+            
+            yield return SceneManager.LoadSceneAsync("Ui", LoadSceneMode.Additive);
+            Scene uiScene = SceneManager.GetSceneByName("Ui");
+            SceneManager.SetActiveScene(uiScene);
+            
+            yield return SceneManager.UnloadSceneAsync(activeScene);
+            
+            yield return SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
+
+            Scene level1ActiveScene = SceneManager.GetSceneByName("Level1");
+            SceneManager.SetActiveScene(level1ActiveScene);
+        }
+        
+        IEnumerator LoadMenuSceneAsync()
+        {
+            yield return SceneManager.LoadSceneAsync("Menu");
         }
 
         private void SingletonThisObject()
@@ -77,5 +110,5 @@ namespace Platformer2d.Managers
             Debug.Log("Deleting all loading data");
             PlayerPrefs.DeleteAll();
         }
-    }    
+    }
 }

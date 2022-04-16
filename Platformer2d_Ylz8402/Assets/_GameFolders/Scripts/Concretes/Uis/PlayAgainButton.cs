@@ -1,4 +1,5 @@
 using Platformer2d.Abstracts.Uis;
+using Platformer2d.Managers;
 
 namespace Platformer2d.Uis
 {
@@ -6,7 +7,7 @@ namespace Platformer2d.Uis
     {
         protected override void HandleOnButtonClicked()
         {
-            //TODO play again
+            GameManager.Instance.StartGame();
         }
     }
 }
