@@ -19,7 +19,7 @@ namespace Platformer2d.Abstracts.Controllers
         protected virtual void Awake()
         {
             Attacker = new Attacker();
-            Health = new Health(_enemyStats);
+            Health = new EnemyHealth(this);
         }
 
         void OnEnable()

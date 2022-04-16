@@ -2,7 +2,7 @@
 
 namespace Platformer2d.Abstracts.ScriptableObjects
 {
-    public abstract class StatsSO : ScriptableObject
+    public abstract class StatsSO : ScriptableObject,IStats
     {
         [Header("Movements")]
         [SerializeField] protected float _moveSpeed = 2f;

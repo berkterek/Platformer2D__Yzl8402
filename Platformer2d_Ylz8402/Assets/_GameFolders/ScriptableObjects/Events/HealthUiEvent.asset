@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75eb40d193745c187a6ba14fca941db, type: 3}
-  m_Name: PlayerDataContainer1
+  m_Script: {fileID: 11500000, guid: d89d335a81d2ab345a6e91da2fbff9f9, type: 3}
+  m_Name: HealthUiEvent
   m_EditorClassIdentifier: 
-  _currentCoin: 5
-  _playerStats: {fileID: 11400000, guid: 64dfab8d772fe3d47a786e7868a3b5c2, type: 2}
-  _healthEvent: {fileID: 11400000, guid: c5a6e11c1f1533246821481ae7331218, type: 2}

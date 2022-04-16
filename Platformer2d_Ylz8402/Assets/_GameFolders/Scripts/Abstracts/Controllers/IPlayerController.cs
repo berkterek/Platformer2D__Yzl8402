@@ -10,6 +10,7 @@ namespace Platformer2d.Abstracts.Controllers
         IInputReader InputReader { get; }
         IGroundChecker GroundChecker { get; }
         IPlayerStats Stats { get; }
+        IPlayerDataContainer PlayerData { get;}
         SpriteRenderer ObjectiveSpriteRenderer { get; }
         void IncreaseCoin(int coinValue);
         bool DecreaseCoin(int coinValue);

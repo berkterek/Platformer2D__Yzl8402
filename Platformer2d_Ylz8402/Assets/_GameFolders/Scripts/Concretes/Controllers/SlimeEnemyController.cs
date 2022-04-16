@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Platformer2d.Controllers
 {
-    public class SlimeEnemy : EnemyController,ISlimeEnemyController
+    public class SlimeEnemyController : EnemyController,ISlimeEnemyController
     {
         [SerializeField] float _direction = 1f;
         [SerializeField] Transform _body;

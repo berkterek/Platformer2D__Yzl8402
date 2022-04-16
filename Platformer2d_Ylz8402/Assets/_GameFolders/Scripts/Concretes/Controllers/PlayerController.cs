@@ -1,4 +1,3 @@
-using System;
 using Platformer2d.Abstracts.Animations;
 using Platformer2d.Abstracts.Combats;
 using Platformer2d.Abstracts.Controllers;
@@ -29,6 +28,7 @@ namespace Platformer2d.Controllers
         public IInputReader InputReader { get; private set; }
         public IGroundChecker GroundChecker { get; private set; }
         public IPlayerStats Stats => _playerData.Stats;
+        public IPlayerDataContainer PlayerData => _playerData;
         public SpriteRenderer ObjectiveSpriteRenderer => _objectiveSpriteRenderer;
         public IHealth Health { get; private set; }
         public IAttacker Attacker { get; private set; }
@@ -40,7 +40,7 @@ namespace Platformer2d.Controllers
             _jump = new PlayerJumpForce(this);
             _animator = new PlayerAnimationWithAnimator(this);
             _flip = new PlayerSpriteRenderFlip(this);
-            Health = new Health(_playerData.Stats);
+            Health = new PlayerHealth(this);
             Attacker = new Attacker();
             GroundChecker = GetComponent<IGroundChecker>();
         }

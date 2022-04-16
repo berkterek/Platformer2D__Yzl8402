@@ -2,7 +2,6 @@ using NUnit.Framework;
 using Platformer2d.Abstracts.Combats;
 using Platformer2d.Combats;
 using NSubstitute;
-using Platformer2d.Abstracts.Controllers;
 using Platformer2d.Abstracts.DataContainers;
 
 namespace Combats
@@ -13,10 +12,9 @@ namespace Combats
 
         private IHealth GetHealth()
         {
-            var player = Substitute.For<IPlayerController>();
-            player.Stats.Returns(Substitute.For<IPlayerStats>());
-            player.Stats.MaxHealth.Returns(100);
-            return new Health(player.Stats);
+            IStats stats =  Substitute.For<IStats>();
+            stats.MaxHealth.Returns(100);
+            return Substitute.For<Health>(stats);
         }
 
         private IAttacker GetAttacker(int damage)

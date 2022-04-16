@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Platformer2d.Controllers
 {
-    public class FlyEnemy : EnemyController, IFlyEnemyController
+    public class FlyEnemyController : EnemyController, IFlyEnemyController
     {
         [SerializeField] float _maxDistance = 3f;
         [SerializeField] Vector3 _direction;

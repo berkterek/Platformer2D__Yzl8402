@@ -1,10 +1,9 @@
-using Platformer2d.Abstracts.Combats;
 using Platformer2d.Abstracts.DataContainers;
 using UnityEngine;
 
-namespace Platformer2d.Combats
+namespace Platformer2d.Abstracts.Combats
 {
-    public class Health : IHealth
+    public abstract class Health : IHealth
     {
         public int MaxHealth { get; }
         public int CurrentHealth { get; private set; }
@@ -12,18 +11,17 @@ namespace Platformer2d.Combats
         public event System.Action OnDead;
         public event System.Action OnTookHit;
 
-        public Health(IStats stats)
+        protected Health(IStats stats)
         {
             MaxHealth = stats.MaxHealth;
             CurrentHealth = MaxHealth;
         }
         
-        public void TakeDamage(IAttacker attacker)
+        public virtual void TakeDamage(IAttacker attacker)
         {
             if (IsDead) return;
             
             CurrentHealth = Mathf.Max(CurrentHealth -= attacker.Damage,0);
-            Debug.Log(CurrentHealth);
             
             if (IsDead)
             {
@@ -35,11 +33,11 @@ namespace Platformer2d.Combats
             }
         }
         
-        public void IncreaseHealth(int healthValue)
+        public virtual void IncreaseHealth(int healthValue)
         {
             CurrentHealth = Mathf.Min(CurrentHealth + healthValue, MaxHealth);
             Debug.Log(CurrentHealth);
         }
-    }    
+    }
 }
 
