@@ -10,5 +10,6 @@ namespace Platformer2d.Abstracts.DataContainers
         bool DecreaseCoin(int coinValue);
         void IncreaseCoin(int coinValue);
         IntEventWithOneParameterSO HealthEvent { get; }
+        StringEventWithOneParameterSO DyingEvent { get; }
     }
 }

@@ -98,6 +98,7 @@ namespace Platformer2d.Controllers
         
         void HandleOnDead()
         {
+            _playerData.DyingEvent.Notify("Player is Dead");
             Destroy(this.gameObject);
         }
         

@@ -9,10 +9,12 @@ namespace Platformer2d.ScriptableObjects
         [SerializeField] int _currentCoin = 0;
         [SerializeField] PlayerStatsSO _playerStats;
         [SerializeField] IntEventWithOneParameterSO _healthEvent;
-
+        [SerializeField] StringEventWithOneParameterSO _dyingEvent;
+ 
         public int CurrentCoin => _currentCoin;
         public IPlayerStats Stats => _playerStats;
         public IntEventWithOneParameterSO HealthEvent => _healthEvent;
+        public StringEventWithOneParameterSO DyingEvent => _dyingEvent;
         public event System.Action<int> OnCoinValueChanged;
 
         void OnDisable()

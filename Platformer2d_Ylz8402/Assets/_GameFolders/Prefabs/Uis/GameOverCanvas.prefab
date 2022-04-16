@@ -85,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134676677}
+  - component: {fileID: 6649022511605454640}
   m_Layer: 5
   m_Name: GameOverObjects
   m_TagString: Untagged
@@ -112,6 +113,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6649022511605454640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134676676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9e6e3416a176340bc7098e2ab323d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _childObject: {fileID: 462395697}
+  _dyingEvent: {fileID: 11400000, guid: 20056e39044fa6749816a362ab75c258, type: 2}
 --- !u!1 &462395697
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1181526643336370644}
+  _gameOverPanel: {fileID: 462395697}
 --- !u!1 &3367676612767639316
 GameObject:
   m_ObjectHideFlags: 0
