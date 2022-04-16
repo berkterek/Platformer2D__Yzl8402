@@ -19,6 +19,11 @@ namespace Platformer2d.Managers
             _playerPositionByLevelName = new Dictionary<string, Vector3>();
         }
 
+        public void LoadMenuScene()
+        {
+            StartCoroutine(LoadGameSceneAsync("Menu", LoadSceneMode.Single));
+        }
+
         public void LoadGameScene(string sceneName)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
@@ -31,12 +36,12 @@ namespace Platformer2d.Managers
                 _playerPositionByLevelName.Add(currentSceneName,LastPosition);
             }
             
-            StartCoroutine(LoadGameSceneAsync(sceneName));
+            StartCoroutine(LoadGameSceneAsync(sceneName,LoadSceneMode.Single));
         }
 
-        private IEnumerator LoadGameSceneAsync(string sceneName)
+        private IEnumerator LoadGameSceneAsync(string sceneName, LoadSceneMode mode)
         {
-            yield return SceneManager.LoadSceneAsync(sceneName);
+            yield return SceneManager.LoadSceneAsync(sceneName,mode);
         }
 
         private void SingletonThisObject()

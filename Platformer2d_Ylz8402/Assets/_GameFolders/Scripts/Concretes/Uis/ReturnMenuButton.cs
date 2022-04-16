@@ -3,11 +3,11 @@ using Platformer2d.Managers;
 
 namespace Platformer2d.Uis
 {
-    public class StartButton : BaseButton
+    public class ReturnMenuButton : BaseButton
     {
         protected override void HandleOnButtonClicked()
         {
-            GameManager.Instance.LoadGameScene("Level1");
+            GameManager.Instance.LoadMenuScene();
         }
     }
 }
