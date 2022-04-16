@@ -10,6 +10,7 @@ namespace Platformer2d.Combats
         public PlayerHealth(IPlayerController playerController) : base(playerController.Stats)
         {
             _playerController = playerController;
+            _playerController.PlayerData.HealthEvent.Notify(CurrentHealth);
         }
 
         public override void TakeDamage(IAttacker attacker)

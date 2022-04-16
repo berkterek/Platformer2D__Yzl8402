@@ -28,7 +28,7 @@ namespace Platformer2d.Managers
         {
             StartCoroutine(LoadStartGameAsync());
         }
-
+        
         public void LoadGameSceneOnGameplay(string sceneName)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
@@ -60,14 +60,20 @@ namespace Platformer2d.Managers
         {
             Scene activeScene = SceneManager.GetActiveScene();
             
-            yield return SceneManager.LoadSceneAsync("Ui", LoadSceneMode.Additive);
             Scene uiScene = SceneManager.GetSceneByName("Ui");
+
+            if (!uiScene.IsValid())
+            {
+                yield return SceneManager.LoadSceneAsync("Ui", LoadSceneMode.Additive);
+                uiScene = SceneManager.GetSceneByName("Ui");
+            }
+            
             SceneManager.SetActiveScene(uiScene);
             
             yield return SceneManager.UnloadSceneAsync(activeScene);
             
             yield return SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
-
+            
             Scene level1ActiveScene = SceneManager.GetSceneByName("Level1");
             SceneManager.SetActiveScene(level1ActiveScene);
         }
